@@ -18,22 +18,27 @@ export const Register = ({ onChangeRoute, loadUser }) => {
   };
 
   const onSubmitSignIn = () => {
-    fetch("http://localhost:3000/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: nameRegistr,
-        email: emailRegistr,
-        password: passwordRegistr
-      }),
-    })
+    fetch(
+      "https://desolate-everglades-54148-6bdb29bf504f.herokuapp.com/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: nameRegistr,
+          email: emailRegistr,
+          password: passwordRegistr,
+        }),
+      }
+    )
       .then((response) => response.json())
       .then((user) => {
-        if (user) {
+        if (user.id) {
           loadUser(user);
           onChangeRoute("home");
+        } else {
+          console.log("Incorrect entered data");
         }
       });
   };
