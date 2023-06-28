@@ -39,6 +39,7 @@ function App() {
     setName(data.name);
     /*     setEmail(data.email); */
     setEntries(data.entries);
+    console.log(entries)
     /*     setJoined(data.joined); */
   };
 
@@ -129,7 +130,7 @@ function App() {
           <FaceRecognition box={box} imageUrl={imageUrl} />
         </div>
       ) : route === "signin" || route === "signout" ? (
-        <SignIn onChangeRoute={onChangeRoute} loadUser={loadUser} />
+          <SignIn onChangeRoute={onChangeRoute} loadUser={loadUser} setEntries={setEntries} />
       ) : (
         <Register onChangeRoute={onChangeRoute} loadUser={loadUser} />
       )}
