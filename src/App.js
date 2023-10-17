@@ -74,7 +74,7 @@ function App() {
 
   const onPictureSubmit = () => {
     setImageUrl(input);
-    fetch("https://facerecognitionbrain-back.onrender.com/imageurl", {
+    fetch("https://facerecognitionbrainback.onrender.com/imageurl", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -84,7 +84,7 @@ function App() {
       .then((response) => response.json())
       .then((response) => {
         if (response) {
-          fetch("https://facerecognitionbrain-back.onrender.com/image", {
+          fetch("https://facerecognitionbrainback.onrender.com/image", {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

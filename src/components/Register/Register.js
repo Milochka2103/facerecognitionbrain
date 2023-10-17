@@ -19,7 +19,7 @@ export const Register = ({ onChangeRoute, loadUser }) => {
   };
 
   const onSubmitSignIn = () => {
-    fetch("https://facerecognitionbrain-back.onrender.com/register", {
+    fetch("https://facerecognitionbrainback.onrender.com/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
