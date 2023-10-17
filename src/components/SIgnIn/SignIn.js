@@ -14,19 +14,16 @@ export const SignIn = ({ onChangeRoute, loadUser }) => {
   }
 
   const onSubmitSignIn = () => {
-    fetch(
-      "https://desolate-everglades-54148-6bdb29bf504f.herokuapp.com/signin",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      }
-    )
+    fetch("https://facerecognitionbrain-back.onrender.com/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
       .then((response) => response.json())
       .then((user) => {
         if (user.id) {

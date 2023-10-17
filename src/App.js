@@ -74,29 +74,23 @@ function App() {
 
   const onPictureSubmit = () => {
     setImageUrl(input);
-    fetch(
-      "https://desolate-everglades-54148-6bdb29bf504f.herokuapp.com/imageurl",
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          input: input,
-        }),
-      }
-    )
+    fetch("https://facerecognitionbrain-back.onrender.com/imageurl", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: input,
+      }),
+    })
       .then((response) => response.json())
       .then((response) => {
         if (response) {
-          fetch(
-            "https://desolate-everglades-54148-6bdb29bf504f.herokuapp.com/image",
-            {
-              method: "put",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                id: id,
-              }),
-            }
-          )
+          fetch("https://facerecognitionbrain-back.onrender.com/image", {
+            method: "put",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: id,
+            }),
+          })
             .then((response) => response.json())
             .then((count) => setEntries(count))
             .catch(console.log);

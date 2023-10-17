@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { redirect } from 'react-router-dom';
 
 export const Register = ({ onChangeRoute, loadUser }) => {
   const [nameRegistr, setNameRegistr] = useState("");
@@ -18,25 +19,22 @@ export const Register = ({ onChangeRoute, loadUser }) => {
   };
 
   const onSubmitSignIn = () => {
-    fetch(
-      "https://desolate-everglades-54148-6bdb29bf504f.herokuapp.com/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: nameRegistr,
-          email: emailRegistr,
-          password: passwordRegistr,
-        }),
-      }
-    )
+    fetch("https://facerecognitionbrain-back.onrender.com/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: nameRegistr,
+        email: emailRegistr,
+        password: passwordRegistr,
+      }),
+    })
       .then((response) => response.json())
       .then((user) => {
         if (user.id) {
           loadUser(user);
-          onChangeRoute("home");
+          return redirect("/profile");
         } else {
           console.log("Incorrect entered data");
         }
