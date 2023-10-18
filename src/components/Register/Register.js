@@ -34,7 +34,7 @@ export const Register = ({ onChangeRoute, loadUser }) => {
       .then((user) => {
         if (user.id) {
           loadUser(user);
-          return redirect("/profile");
+          onChangeRoute("home");
         } else {
           console.log("Incorrect entered data");
         }
